@@ -40,7 +40,7 @@ class DecksPeeker extends Component {
     return (
       <View>
         <FlatList
-          data={Object.values(decks)}
+          data={Object.values(decks).sort((a, b) => a.title > b.title)}
           renderItem={this.renderItem}
           keyExtractor={(item, index) => index}
         />

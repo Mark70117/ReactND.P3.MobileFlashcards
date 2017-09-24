@@ -5,13 +5,8 @@ export function fetchDecks() {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(r => formatDecks(r));
 }
 
-export function createDeck({ deckName }) {
-  return AsyncStorage.mergeItem(
-    DECKS_STORAGE_KEY,
-    JSON.stringify({
-      [deckName]: { title: deckName, questions: [] },
-    })
-  );
+export function createDeck(deck) {
+  return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck));
 }
 
 export function addCardDeck({ card, deckName }) {
