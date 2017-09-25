@@ -24,24 +24,20 @@ class DecksPeeker extends Component {
       })
       .then(() => this.setState(() => ({ ready: true })));
   }
-  renderItem({ item }) {
-    const { title, questions } = item;
-    return (
-      <View style={styles.item}>
-        <TouchableOpacity
-          onPress={() =>
-            this.props.navigation.navigate('IndividualDeckView', {
-              title,
-              questions,
-            })}
-        >
-          <DecksListItem title={title} questions={questions} />
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <TouchableOpacity
+        onPress={() =>
+          this.props.navigation.navigate('IndividualDeckView', item)}
+      >
+        <DecksListItem title={item.title} questions={item.questions} />
+      </TouchableOpacity>
+    </View>
+  );
+
   render() {
     const { decks } = this.props;
+    console.log(this.props);
     return (
       <View>
         <FlatList

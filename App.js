@@ -66,6 +66,7 @@ function UdaciStatusBar({ backgroundColor, ...props }) {
 const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs,
+    navigationOptions: { title: 'Home' },
   },
   IndividualDeckView: {
     screen: IndividualDeckView,
@@ -88,7 +89,7 @@ export default class App extends React.Component {
       <Provider store={createStore(reducer)}>
         <View style={{ flex: 1 }}>
           <UdaciStatusBar backgroundColor={blue} barStyle="light-content" />
-          <Tabs />
+          <MainNavigator />
         </View>
       </Provider>
     );
