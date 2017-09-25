@@ -26,7 +26,6 @@ class DecksPeeker extends Component {
   }
   renderItem({ item }) {
     const { title, questions } = item;
-    console.log('renderItem title', title);
     return (
       <View style={styles.item}>
         <TouchableOpacity onPress={() => console.log('Pressed!')}>

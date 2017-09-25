@@ -10,6 +10,7 @@ import { blue, white } from './utils/colors';
 import { Constants } from 'expo';
 import { TabNavigator } from 'react-navigation';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { setLocalNotification } from './utils/helpers';
 
 const Tabs = TabNavigator(
   {
@@ -62,6 +63,10 @@ function UdaciStatusBar({ backgroundColor, ...props }) {
 }
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer)}>
