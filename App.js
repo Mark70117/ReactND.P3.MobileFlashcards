@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, StatusBar, Platform } from 'react-native';
-import PrimaryView from './components/PrimaryView';
-import DecksPeeker from './components/DecksPeeker';
 import AddDeck from './components/AddDeck';
+import DecksPeeker from './components/DecksPeeker';
+import IndividualDeckView from './components/IndividualDeckView';
+import PrimaryView from './components/PrimaryView';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 import { blue, white } from './utils/colors';
 import { Constants } from 'expo';
-import { TabNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { setLocalNotification } from './utils/helpers';
 
@@ -61,6 +62,21 @@ function UdaciStatusBar({ backgroundColor, ...props }) {
     </View>
   );
 }
+
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: Tabs,
+  },
+  IndividualDeckView: {
+    screen: IndividualDeckView,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: blue,
+      },
+    },
+  },
+});
 
 export default class App extends React.Component {
   componentDidMount() {

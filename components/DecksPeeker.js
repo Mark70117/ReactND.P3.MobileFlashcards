@@ -28,7 +28,13 @@ class DecksPeeker extends Component {
     const { title, questions } = item;
     return (
       <View style={styles.item}>
-        <TouchableOpacity onPress={() => console.log('Pressed!')}>
+        <TouchableOpacity
+          onPress={() =>
+            this.props.navigation.navigate('IndividualDeckView', {
+              title,
+              questions,
+            })}
+        >
           <DecksListItem title={title} questions={questions} />
         </TouchableOpacity>
       </View>
