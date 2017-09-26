@@ -3,6 +3,7 @@ import { View, StatusBar, Platform } from 'react-native';
 import AddDeck from './components/AddDeck';
 import DecksPeeker from './components/DecksPeeker';
 import IndividualDeckView from './components/IndividualDeckView';
+import NewQuestionView from './components/NewQuestionView';
 import PrimaryView from './components/PrimaryView';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -71,6 +72,16 @@ const MainNavigator = StackNavigator({
   IndividualDeckView: {
     screen: IndividualDeckView,
     navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: blue,
+      },
+    },
+  },
+  NewQuestionView: {
+    screen: NewQuestionView,
+    navigationOptions: {
+      title: 'Add Card',
       headerTintColor: white,
       headerStyle: {
         backgroundColor: blue,
