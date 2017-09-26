@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
 import TextButton from './TextButton';
+import { connect } from 'react-redux';
 
-import { View, StyleSheet, Text } from 'react-native';
-import { gray } from '../utils/colors';
+import {
+  View,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
+import { gray, blue, purple, white } from '../utils/colors';
+
+// TODO
+function TxBtn({ tx, onPress }) {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={
+        Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn
+      }
+    >
+      <Text style={styles.submitBtnText}>{tx}</Text>
+    </TouchableOpacity>
+  );
+}
 
 class IndivdualDeckView extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -12,7 +33,9 @@ class IndivdualDeckView extends Component {
     };
   };
   render() {
-    const { title, questions } = this.props.navigation.state.params;
+    const { title } = this.props.navigation.state.params;
+    const questions = this.props.decks[title].questions;
+
     return (
       <View style={styles.container}>
         <View>
@@ -21,18 +44,15 @@ class IndivdualDeckView extends Component {
             cards: {questions.length}
           </Text>
         </View>
-        <TextButton
-          style={{ margin: 20 }}
+        <TxBtn
+          tx={'Add Card'}
           onPress={() => {
-            console.log('opPress IDV');
             this.props.navigation.navigate('NewQuestionView', {
               title,
               questions,
             });
           }}
-        >
-          Add Card
-        </TextButton>
+        />
       </View>
     );
   }
@@ -50,6 +70,36 @@ const styles = StyleSheet.create({
     paddingTop: 25,
     backgroundColor: '#ecf0f1',
   },
+  iosSubmitBtn: {
+    backgroundColor: blue,
+    padding: 10,
+    borderRadius: 7,
+    height: 45,
+    marginLeft: 40,
+    marginRight: 40,
+  },
+  AndroidSubmitBtn: {
+    backgroundColor: blue,
+    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    height: 45,
+    borderRadius: 2,
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  submitBtnText: {
+    color: white,
+    fontSize: 22,
+    textAlign: 'center',
+  },
 });
 
-export default IndivdualDeckView;
+function mapStateToProps(state) {
+  return {
+    decks: state,
+  };
+}
+
+export default connect(mapStateToProps)(IndivdualDeckView);

@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { addDeck } from '../actions';
 import { blue, white } from '../utils/colors';
 
+// TODO
 function SubmitBtn({ onPress }) {
   return (
     <TouchableOpacity

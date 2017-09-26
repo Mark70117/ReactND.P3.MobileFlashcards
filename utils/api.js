@@ -11,12 +11,15 @@ export function createDeck(deck) {
 
 export function addCardDeck({ card, deckName }) {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
-    newQuestions = result[deckName].questions.push(card);
-    AsyncStorage.mergeItem(
-      DECKS_STORAGE_KEY,
-      JSON.stringify({
-        [deckName]: { title: deckName, questions: [] },
-      })
-    );
+    let decks = JSON.parse(result);
+
+    let newQuestions = JSON.parse(JSON.stringify(decks[deckName].questions));
+    newQuestions[newQuestions.length] = card;
+
+    const value = JSON.stringify({
+      [deckName]: { title: deckName, questions: newQuestions },
+    });
+
+    AsyncStorage.mergeItem(DECKS_STORAGE_KEY, value);
   });
 }
