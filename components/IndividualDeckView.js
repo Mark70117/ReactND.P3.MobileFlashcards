@@ -53,6 +53,15 @@ class IndivdualDeckView extends Component {
             });
           }}
         />
+        <TxBtn
+          tx={'Start Quiz'}
+          onPress={() => {
+            this.props.navigation.navigate('QuizView', {
+              title,
+              questions,
+            });
+          }}
+        />
       </View>
     );
   }

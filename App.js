@@ -4,6 +4,8 @@ import AddDeck from './components/AddDeck';
 import DecksPeeker from './components/DecksPeeker';
 import IndividualDeckView from './components/IndividualDeckView';
 import NewQuestionView from './components/NewQuestionView';
+import QuizView from './components/QuizView';
+
 import PrimaryView from './components/PrimaryView';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -82,6 +84,16 @@ const MainNavigator = StackNavigator({
     screen: NewQuestionView,
     navigationOptions: {
       title: 'Add Card',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: blue,
+      },
+    },
+  },
+  QuizView: {
+    screen: QuizView,
+    navigationOptions: {
+      title: 'Quiz',
       headerTintColor: white,
       headerStyle: {
         backgroundColor: blue,
