@@ -31,9 +31,7 @@ class DecksPeeker extends Component {
         onPress={() =>
           this.props.navigation.navigate('IndividualDeckView', item)}
       >
-        {' '}
-        <Text>FOO</Text>
-        {/* <DecksListItem title={item.title} questions={item.questions} /> */}
+        <DecksListItem title={item.title} questions={item.questions} /> 
       </TouchableOpacity>
     </View>
   );
@@ -42,25 +40,11 @@ class DecksPeeker extends Component {
     const { decks } = this.props;
     return (
       <View>
-        {/* <FlatList
+        <FlatList
           data={Object.values(decks).sort((a, b) => a.title > b.title)}
           renderItem={this.renderItem}
           keyExtractor={(item, index) => index}
-        /> */}
-        {decks['JavaScript'] && (
-          <TouchableOpacity
-            onPress={() =>
-              this.props.navigation.navigate(
-                'IndividualDeckView',
-                decks['JavaScript']
-              )}
-          >
-            <DecksListItem
-              title={decks['JavaScript'].title}
-              questions={decks['JavaScript'].questions}
-            />
-          </TouchableOpacity>
-        )}
+        /> 
       </View>
     );
   }
