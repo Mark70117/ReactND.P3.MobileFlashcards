@@ -12,21 +12,8 @@ import {
 import { createDeck } from '../utils/api';
 import { connect } from 'react-redux';
 import { addDeck } from '../actions';
-import { blue, white } from '../utils/colors';
-
-// TODO
-function SubmitBtn({ onPress }) {
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={
-        Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn
-      }
-    >
-      <Text style={styles.submitBtnText}>SUBMIT</Text>
-    </TouchableOpacity>
-  );
-}
+import { blue, gray, offwhite, white } from '../utils/colors';
+import TextInButton from './TextInButton';
 
 class AddDeck extends Component {
   state = {
@@ -35,8 +22,6 @@ class AddDeck extends Component {
   submit = () => {
     const entry = this.state;
     const { decks } = this.props;
-
-    // console.log('on submit', entry); //{text: "Fred"}
 
     if (decks[entry.text]) {
       Alert.alert(
@@ -62,13 +47,15 @@ class AddDeck extends Component {
     const { text } = this.state;
     return (
       <KeyboardAvoidingView style={styles.container}>
-        <Text>New Deck Name:</Text>
+        <Text style={{ fontSize: 20 }}>
+          What is the Title of your New Deck:
+        </Text>
         <TextInput
           value={text}
           style={styles.input}
           onChangeText={text => this.setState({ text })}
         />
-        <SubmitBtn onPress={this.submit} />
+        <TextInButton onPress={this.submit}>SUBMIT</TextInButton>
       </KeyboardAvoidingView>
     );
   }
@@ -80,39 +67,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 25,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: offwhite,
   },
   input: {
     width: 200,
     height: 44,
     padding: 8,
     borderWidth: 1,
-    borderColor: '#7f7f7f',
-    margin: 50,
-  },
-  iosSubmitBtn: {
-    backgroundColor: blue,
-    padding: 10,
-    borderRadius: 7,
-    height: 45,
-    marginLeft: 40,
-    marginRight: 40,
-  },
-  AndroidSubmitBtn: {
-    backgroundColor: blue,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  submitBtnText: {
-    color: white,
-    fontSize: 22,
-    textAlign: 'center',
+    borderColor: gray,
+    margin: 20,
   },
 });
 function mapStateToProps(state) {

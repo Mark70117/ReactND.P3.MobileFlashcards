@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { gray, blue, purple, white } from '../utils/colors';
+import { gray, blue, offwhite, purple, white } from '../utils/colors';
 import TextInButton from './TextInButton';
 
 class IndivdualDeckView extends Component {
@@ -24,7 +24,6 @@ class IndivdualDeckView extends Component {
   };
   componentDidMount() {
     const { bounceValue } = this.state;
-    console.log('IDV cdm', bounceValue);
     Animated.sequence([
       Animated.timing(bounceValue, { duration: 400, toValue: 1.2 }),
       Animated.spring(bounceValue, { toValue: 1, friction: 4 }),
@@ -77,16 +76,12 @@ class IndivdualDeckView extends Component {
 }
 
 const styles = StyleSheet.create({
-  deck: {
-    flexDirection: 'row',
-    marginTop: 12,
-  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 25,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: offwhite,
   },
   group: {
     flex: 1,
@@ -94,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 5,
     padding: 5,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: offwhite,
   },
 });
 

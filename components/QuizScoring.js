@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { gray, red, green } from '../utils/colors';
+import { gray, red, green, offwhite } from '../utils/colors';
 import TextInButton from './TextInButton';
 
 export default function QuizScoring({ onCorrect, onIncorrect }) {
@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 25,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: offwhite,
   },
 });

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { gray } from '../utils/colors';
+import { gray, offwhite } from '../utils/colors';
 import QuizRemaining from './QuizRemaining';
 import QuizScoring from './QuizScoring';
 import QuizQAFlipper from './QuizQAFlipper';
 
 export default class QuizActive extends Component {
   render() {
-    console.log('QuizActive', this.props);
     const {
       title,
       questions,
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 5,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: offwhite,
   },
   group: {
     flex: 1,
@@ -54,6 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 5,
     padding: 10,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: offwhite,
   },
 });

@@ -13,18 +13,16 @@ export default class QuizView extends Component {
   onCorrect = () => {
     const { idx, nCorrect } = this.state;
 
-    console.log('onCorrect');
     this.setState({ idx: idx + 1, nCorrect: nCorrect + 1, showAnswer: false });
   };
   onIncorrect = () => {
     const { idx } = this.state;
 
-    console.log('onIncorrect');
     this.setState({ idx: idx + 1, showAnswer: false });
   };
   toggleQA = () => {
     const { showAnswer } = this.state;
-    console.log('toggleQA', showAnswer);
+
     this.setState({ showAnswer: !showAnswer });
   };
   render() {

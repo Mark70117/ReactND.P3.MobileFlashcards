@@ -10,8 +10,6 @@ export function clearLocalNotification() {
 }
 
 function createNotification() {
-  console.log('createNotification called');
-
   return {
     title: 'Study your flashcards!',
     body: "Don't forget to log your stats for today!",
@@ -29,37 +27,26 @@ function createNotification() {
 
 export function setLocalNotification() {
   Notifications.addListener(x => {
-    console.log('Notifications.addListener', x);
-    console.log('Notifications.addListener', typeof x);
+    //TODO alert mac iOS
   });
-  // clearLocalNotification();
-  // console.log('setLocalNotification called');
-  // Permissions.askAsync(Permissions.NOTIFICATIONS).then(({ status }) => {
-  //   console.log(status);
-  // });
+
   AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
     .then(data => {
-      console.log('data', data);
       if (data === null) {
         Permissions.askAsync(Permissions.NOTIFICATIONS).then(({ status }) => {
           if (status === 'granted') {
-            console.log('I see granted');
             Notifications.cancelAllScheduledNotificationsAsync();
 
-            let today = new Date();
-            today.setDate(today.getDate());
-            today.setHours(15, 36, 0);
-            console.log(today);
+            let tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate());
+            tomorrow.setHours(15, 36, 0);
 
             const notification = createNotification();
-            console.log('notification', notification);
 
             Notifications.scheduleLocalNotificationAsync(notification, {
-              time: today,
+              time: tomorrow,
               repeat: 'day',
-            }).then(result => {
-              console.log('scheduleLocalNotificationAsync then', result);
             });
 
             AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
