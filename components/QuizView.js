@@ -25,6 +25,9 @@ export default class QuizView extends Component {
 
     this.setState({ showAnswer: !showAnswer });
   };
+  resetQuiz = () => {
+    this.setState({ idx: 0, nCorrect: 0 });
+  };
   render() {
     const { idx, nCorrect, showAnswer } = this.state;
     const { title, questions } = this.props.navigation.state.params;
@@ -42,7 +45,11 @@ export default class QuizView extends Component {
             idx={idx}
           />
         ) : (
-          <QuizFinale nCorrect={nCorrect} />
+          <QuizFinale
+            nCorrect={nCorrect}
+            resetQuiz={this.resetQuiz}
+            navigation={this.props.navigation}
+          />
         )}
       </View>
     );
