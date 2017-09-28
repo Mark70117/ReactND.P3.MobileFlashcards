@@ -8,14 +8,27 @@ import QuizQAFlipper from './QuizQAFlipper';
 export default class QuizActive extends Component {
   render() {
     console.log('QuizActive', this.props);
-    const { title, questions, onCorrect, onIncorrect, idx } = this.props;
+    const {
+      title,
+      questions,
+      onCorrect,
+      onIncorrect,
+      toggleQA,
+      showAnswer,
+      idx,
+    } = this.props;
     return (
       <View style={styles.container}>
         <View style={[styles.group, { justifyContent: 'flex-start', flex: 1 }]}>
           <QuizRemaining n={questions.length - idx} />
         </View>
         <View style={[styles.group, { flex: 4 }]}>
-          <QuizQAFlipper />
+          <QuizQAFlipper
+            question={questions[idx].question}
+            answer={questions[idx].answer}
+            toggleQA={toggleQA}
+            showAnswer={showAnswer}
+          />
         </View>
         <View
           style={[styles.group, { justifyContent: 'space-around', flex: 2 }]}
