@@ -19,7 +19,9 @@ $CMD cd ..
 
 ## Running App
 This app requires the _expo_ app be installted on the mobile device
+
 https://itunes.apple.com/app/apple-store/id982107779?ct=www&mt=8
+
 https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
 
 Enter the App direcotry
