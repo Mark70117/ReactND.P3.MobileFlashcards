@@ -4,6 +4,14 @@ This the _Mobile Flashcard_ project for Udacity's React Fundamentals course.
 
 Mark Anderson // July 2017 cohort
 
+### Platform tested on
+
+tested on an iPhone
+
+https://udacity-react.slack.com/archives/C75KNK4M7/p1506456944000050
+
+'''I've made a change to the rubric for the project, due to the difficulty of finding reasonable emulation for iOS devices on non-Apple machines. Your code needs to work on either Android _or_ iOS. Please specify which platform you've tested in your README and the notes to your reviewer.'''
+
 ## Installation of App (standard)
 
 At the command line enter:
