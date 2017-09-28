@@ -20,10 +20,10 @@ function SubmitBtn({ onPress }) {
     <TouchableOpacity
       onPress={onPress}
       style={
-        Platform.OS === 'ios' ? style.iosSubmitBtn : style.AndroidSubmitBtn
+        Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn
       }
     >
-      <Text style={style.submitBtnText}>SUBMIT</Text>
+      <Text style={styles.submitBtnText}>SUBMIT</Text>
     </TouchableOpacity>
   );
 }
@@ -61,11 +61,11 @@ class AddDeck extends Component {
   render() {
     const { text } = this.state;
     return (
-      <KeyboardAvoidingView style={style.container}>
+      <KeyboardAvoidingView style={styles.container}>
         <Text>New Deck Name:</Text>
         <TextInput
           value={text}
-          style={style.input}
+          style={styles.input}
           onChangeText={text => this.setState({ text })}
         />
         <SubmitBtn onPress={this.submit} />
@@ -74,7 +74,7 @@ class AddDeck extends Component {
   }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',

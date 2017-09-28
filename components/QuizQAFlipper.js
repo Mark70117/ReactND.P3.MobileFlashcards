@@ -5,7 +5,7 @@ import { gray } from '../utils/colors';
 export default function QuizQAFlipper({ n }) {
   return (
     <View>
-      <Text>n cards remaining</Text>
+      <Text>Flipper Component TODO</Text>
     </View>
   );
 }

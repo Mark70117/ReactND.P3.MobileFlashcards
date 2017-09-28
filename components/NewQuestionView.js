@@ -20,10 +20,10 @@ function SubmitBtn({ onPress }) {
     <TouchableOpacity
       onPress={onPress}
       style={
-        Platform.OS === 'ios' ? style.iosSubmitBtn : style.AndroidSubmitBtn
+        Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn
       }
     >
-      <Text style={style.submitBtnText}>SUBMIT</Text>
+      <Text style={styles.submitBtnText}>SUBMIT</Text>
     </TouchableOpacity>
   );
 }
@@ -62,20 +62,20 @@ class NewQuestionView extends Component {
     const { title, questions } = this.props.navigation.state.params;
     return (
       <KeyboardAvoidingView
-        style={style.container}
+        style={styles.container}
         behavior="position"
         keyboardVerticalOffset={-164}
       >
         <Text>Question:</Text>
         <TextInput
           value={question_text}
-          style={style.input}
+          style={styles.input}
           onChangeText={question_text => this.setState({ question_text })}
         />
         <Text>Answer:</Text>
         <TextInput
           value={answer_text}
-          style={style.input}
+          style={styles.input}
           onChangeText={answer_text => this.setState({ answer_text })}
         />
         <SubmitBtn onPress={this.submit} />
@@ -84,7 +84,7 @@ class NewQuestionView extends Component {
   }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   deck: {
     flexDirection: 'row',
     marginTop: 12,

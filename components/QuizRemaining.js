@@ -5,7 +5,7 @@ import { gray } from '../utils/colors';
 export default function QuizRemaining({ n }) {
   return (
     <View>
-      <Text>n cards remaining</Text>
+      <Text>{n} cards remaining</Text>
     </View>
   );
 }

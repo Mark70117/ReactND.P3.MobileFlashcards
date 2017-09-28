@@ -1,12 +1,27 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { gray } from '../utils/colors';
+import { gray, red, green } from '../utils/colors';
+import TextInButton from './TextInButton';
 
 export default function QuizScoring({ onCorrect, onIncorrect }) {
   return (
-    <View>
-      <Text>Correct button here</Text>
-      <Text>Incorrect button here</Text>
+    <View style={styles.container}>
+      <TextInButton style={{ backgroundColor: green }} onPress={onCorrect}>
+        {' Correct '}
+      </TextInButton>
+      <TextInButton style={{ backgroundColor: red }} onPress={onIncorrect}>
+        Incorrect
+      </TextInButton>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    paddingTop: 25,
+    backgroundColor: '#ecf0f1',
+  },
+});
