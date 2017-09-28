@@ -2,30 +2,47 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-  View,
+  Animated,
   Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import { gray, blue, purple, white } from '../utils/colors';
 import TextInButton from './TextInButton';
 
 class IndivdualDeckView extends Component {
+  state = {
+    bounceValue: new Animated.Value(1),
+  };
   static navigationOptions = ({ navigation }) => {
     const { title } = navigation.state.params;
     return {
       title,
     };
   };
+  componentDidMount() {
+    const { bounceValue } = this.state;
+    console.log('IDV cdm', bounceValue);
+    Animated.sequence([
+      Animated.timing(bounceValue, { duration: 400, toValue: 1.2 }),
+      Animated.spring(bounceValue, { toValue: 1, friction: 4 }),
+    ]).start();
+  }
   render() {
+    const { bounceValue } = this.state;
     const { title } = this.props.navigation.state.params;
     const questions = this.props.decks[title].questions;
 
     return (
       <View style={styles.container}>
         <View style={[styles.group, { flex: 3 }]}>
-          <Text style={{ fontSize: 40 }}>{title}</Text>
+          <Animated.Text
+            style={{ fontSize: 40, transform: [{ scale: bounceValue }] }}
+          >
+            {title}
+          </Animated.Text>
           <Text style={{ fontSize: 24, color: gray }}>
             cards: {questions.length}
           </Text>
