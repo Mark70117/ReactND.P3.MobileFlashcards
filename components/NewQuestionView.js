@@ -39,7 +39,10 @@ class NewQuestionView extends Component {
       deckName: title,
     });
 
-    Alert.alert('Submit presses', 'Congratulations! You have clicked submit');
+    Alert.alert(
+      'Card Added',
+      'Congratulations! You your card has been added to the deck. Continue entering more cards, or hit the back arrow in the top left corner.'
+    );
     this.setState({ question_text: '', answer_text: '' });
     return;
   };
