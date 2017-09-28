@@ -1,7 +1,8 @@
-import { View, StyleSheet, AsyncStorage } from 'react-native';
+import { Alert, View, StyleSheet, AsyncStorage, Platform } from 'react-native';
 import { Notifications, Permissions } from 'expo';
 
 const NOTIFICATION_KEY = 'MobileFlashcards:notifications';
+let eventSubscription = null;
 
 export function clearLocalNotification() {
   return AsyncStorage.removeItem(NOTIFICATION_KEY).then(
@@ -12,7 +13,7 @@ export function clearLocalNotification() {
 function createNotification() {
   return {
     title: 'Study your flashcards!',
-    body: "Don't forget to log your stats for today!",
+    body: "Don't forget finish a quiz today!",
     ios: {
       sound: true,
     },
@@ -26,10 +27,16 @@ function createNotification() {
 }
 
 export function setLocalNotification() {
-  Notifications.addListener(x => {
-    //TODO alert mac iOS
-  });
-
+  // system alerts do not appear if iOS app is in foreground
+  //  https://forums.expo.io/t/psa-reminder-notifications-in-ios-foregrounded-apps/641
+  if (Platform.OS === 'ios' && eventSubscription === null) {
+    eventSubscription = Notifications.addListener(x => {
+      Alert.alert(
+        'Study your flashcards!',
+        "Don't forget finish a quiz today!"
+      );
+    });
+  }
   AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
     .then(data => {
@@ -40,8 +47,7 @@ export function setLocalNotification() {
 
             let tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
-            tomorrow.setHours(15, 36, 0);
-
+            tomorrow.setHours(10, 18, 0);
             const notification = createNotification();
 
             Notifications.scheduleLocalNotificationAsync(notification, {
