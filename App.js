@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StatusBar, Platform } from 'react-native';
 import AddDeck from './components/AddDeck';
-import DecksPeeker from './components/DecksPeeker';
 import IndividualDeckView from './components/IndividualDeckView';
 import NewQuestionView from './components/NewQuestionView';
 import QuizView from './components/QuizView';
@@ -18,8 +17,8 @@ import { setLocalNotification } from './utils/helpers';
 
 const Tabs = TabNavigator(
   {
-    DecksPeeker: {
-      screen: DecksPeeker,
+    PrimaryView: {
+      screen: PrimaryView,
       navigationOptions: {
         tabBarLabel: 'Created Decks',
         tabBarIcon: ({ tintColor }) => (

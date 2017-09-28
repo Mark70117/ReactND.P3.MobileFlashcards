@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { gray, blue, offwhite, purple, white } from '../utils/colors';
+import { gray, ltBlue, blue, offwhite, purple, white } from '../utils/colors';
 import TextInButton from './TextInButton';
 
 class IndivdualDeckView extends Component {
@@ -50,6 +50,7 @@ class IndivdualDeckView extends Component {
           style={[styles.group, { flex: 2, justifyContent: 'space-around' }]}
         >
           <TextInButton
+            style={{ backgroundColor: ltBlue }}
             onPress={() => {
               this.props.navigation.navigate('NewQuestionView', {
                 title,
