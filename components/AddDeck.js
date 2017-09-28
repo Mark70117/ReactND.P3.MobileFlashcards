@@ -35,11 +35,10 @@ class AddDeck extends Component {
       this.props.dispatch(addDeck(newDeck));
       createDeck(newDeck);
 
-      Alert.alert(
-        'Deck Created',
-        'Congratulations! You have a new deck named:' + entry.text
-      );
       this.setState({ text: '' });
+      this.props.navigation.navigate('IndividualDeckView', {
+        title: entry.text,
+      });
       return;
     }
   };
